@@ -22,33 +22,66 @@ const Cell = TableView.Cell;
 class Example1 extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {sectionLabel: 'Section', cellLabel: 'Cell 1', cells:[<Cell><Text>Cell 3</Text></Cell>]};
+        this.state = {
+            sectionLabel: 'Section', 
+            cellLabel: 'Cell 1', 
+            cells:[
+                <Cell key="3">
+                    <Text>Cell 3</Text>
+                </Cell>
+            ]
+        };
     }
 
     componentDidMount(){
-        setTimeout(()=>this.setState({sectionLabel: 'Section #1', cellLabel: 'Cell #1', cells:[<Cell><Text>Cell #3</Text></Cell>,<Cell><Text>Cell #4</Text></Cell>]}));
+        setTimeout(()=>this.setState({
+            sectionLabel: 'Section #1',
+            cellLabel: 'Cell #1',
+            cells:[
+                <Cell key="3">
+                    <Text>Cell #3</Text>
+                </Cell>,
+                <Cell key="4">
+                    <Text>Cell #4</Text>
+                </Cell>]
+        }));
     }
+
     render() {
         return (
             <TableView style={{flex:1, marginTop: 20}} onPress={(event) => alert(JSON.stringify(event))}>
                 <Section label={this.state.sectionLabel}>
-                    <Cell style={{backgroundColor:'gray'}} value="">
+                    <Cell style={{backgroundColor:'gray'}} value="" key="1">
                         <Text style={{color:'white', textAlign:'right'}}>Cell 1</Text>
                         <Text style={{color:'white', textAlign:'left'}}>Cell 1</Text>
                     </Cell>
-                    <Cell style={{height:200, backgroundColor:'red'}}><Text>{this.state.cellLabel}</Text></Cell>
-                    <Cell style={{height:100}}><Text>Cell 4</Text></Cell>
-                    <Cell><Text>Cell 5</Text></Cell>
+                    <Cell style={{height:200, backgroundColor:'red'}} key="2">
+                        <Text>{this.state.cellLabel}</Text>
+                    </Cell>
+                    <Cell style={{height:100}} key="4">
+                        <Text>Cell 4</Text>
+                    </Cell>
+                    <Cell key="5">
+                        <Text>Cell 5</Text>
+                    </Cell>
                 </Section>
                 <Section label="section 2">
-                    <Cell style={{backgroundColor:'gray'}} value="1">
+                    <Cell style={{backgroundColor:'gray'}} value="1" key="1.1">
                         <Text style={{color:'white', textAlign:'right'}}>Cell 1.1</Text>
                         <Text style={{color:'white', textAlign:'left'}}>Cell 1.1</Text>
                     </Cell>
-                    <Cell style={{height:200, backgroundColor:'red'}}><Text>Cell 1.2</Text></Cell>
-                    <Cell><Text>Cell 3</Text></Cell>
-                    <Cell style={{height:100}}><Text>Cell 4</Text></Cell>
-                    <Cell><Text>Cell 5</Text></Cell>
+                    <Cell style={{height:200, backgroundColor:'red'}} key="1.2">
+                        <Text>Cell 1.2</Text>
+                    </Cell>
+                    <Cell key="3">
+                        <Text>Cell 3</Text>
+                    </Cell>
+                    <Cell style={{height:100}} key="4">
+                        <Text>Cell 4</Text>
+                    </Cell>
+                    <Cell key="5">
+                        <Text>Cell 5</Text>
+                    </Cell>
                 </Section>
                 <Section label="section 3">
                     {this.state.cells}
@@ -63,7 +96,10 @@ class Example2 extends React.Component {
     render() {
         const country = "ES";
         return (
-            <TableView selectedValue="" style={{flex:1, marginTop: 20}} json="states" filter={`country=='${country}'`}
+            <TableView selectedValue=""
+                       style={{flex:1, marginTop: 20}}
+                       json="states"
+                       filter={`country=='${country}'`}
                        tableViewCellStyle={TableView.Consts.CellStyle.Subtitle}
                        onPress={(event) => alert(JSON.stringify(event))}>
                 <Item value="">All states</Item>
@@ -422,15 +458,32 @@ class Launch extends React.Component {
         return (
             <TableView style={{flex:1, marginTop: 20}}>
                 <Section label={this.state.sectionLabel}  arrow={true}>
-                    <Item onPress={ () => this.props.navigator.push(this.props.routes[1])}>Example with custom cells</Item>
-                    <Item onPress={ () => this.props.navigator.push(this.props.routes[2])}>Example with app bundle JSON data</Item>
-                    <Item onPress={ () => this.props.navigator.push(this.props.routes[3])}>Example with multiple sections</Item>
-                    <Item onPress={ () => this.props.navigator.push(this.props.routes[4])}>Example with editing mode</Item>
-                    <Item onPress={ () => this.props.navigator.push(this.props.routes[5])}>Reusable Cell Example 1</Item>
-                    <Item onPress={ () => this.props.navigator.push(this.props.routes[6])}>Reusable Custom Cells</Item>
-                    <Item onPress={ () => this.props.navigator.push(this.props.routes[7])}>Large ListView (scroll memory growth)</Item>
-                    <Item onPress={ () => this.props.navigator.push(this.props.routes[8])}>Reusable Large TableView Example</Item>
-                    <Item onPress={ () => this.props.navigator.push(this.props.routes[9])}>Custom Editing Example</Item>
+                    <Item onPress={() => this.props.navigator.push(this.props.routes[1])}>
+                        Example with custom cells
+                    </Item>
+                    <Item onPress={() => this.props.navigator.push(this.props.routes[2])}>
+                        Example with app bundle JSON data
+                    </Item>
+                    <Item onPress={() => this.props.navigator.push(this.props.routes[3])}>
+                        Example with multiple sections</Item>
+                    <Item onPress={() => this.props.navigator.push(this.props.routes[4])}>
+                        Example with editing mode
+                    </Item>
+                    <Item onPress={() => this.props.navigator.push(this.props.routes[5])}>
+                        Reusable Cell Example 1
+                    </Item>
+                    <Item onPress={() => this.props.navigator.push(this.props.routes[6])}>
+                        Reusable Custom Cells
+                    </Item>
+                    <Item onPress={() => this.props.navigator.push(this.props.routes[7])}>
+                        Large ListView (scroll memory growth)
+                    </Item>
+                    <Item onPress={() => this.props.navigator.push(this.props.routes[8])}>
+                        Reusable Large TableView Example
+                    </Item>
+                    <Item onPress={() => this.props.navigator.push(this.props.routes[9])}>
+                        Custom Editing Example
+                    </Item>
                 </Section>
             </TableView>
         );
@@ -438,40 +491,45 @@ class Launch extends React.Component {
 }
 
 class TableViewExample extends React.Component {
-    render(){
+    render() {
         const routes = [
-        {title: 'TableView Demo', index: 0, component: Launch},
-        {title: 'Example 1', index: 1, component: Example1},
-        {title: 'Example 2', index: 2, component: Example2},
-        {title: 'Example3', index: 3, component: Example3},
-        {title: 'edit', index: 4, component: Edit},
-        {title: 'Reusable Cell Example 1', index: 5, component: ReusableCellExample1},
-        {title: 'Reusable Custom Cells', index: 6, component: ReusableCellExample2},
-        {title: 'Large ListView Example', index: 7, component: ListViewExample},
-        {title: 'Reusable Large TableView Example', index: 8, component: LargeTableExample},
-        {title: 'Custom Editing Example', index: 9, component: CustomEditableExample},
+            {title: 'TableView Demo', index: 0, component: Launch},
+            {title: 'Example 1', index: 1, component: Example1},
+            {title: 'Example 2', index: 2, component: Example2},
+            {title: 'Example3', index: 3, component: Example3},
+            {title: 'edit', index: 4, component: Edit},
+            {title: 'Reusable Cell Example 1', index: 5, component: ReusableCellExample1},
+            {title: 'Reusable Custom Cells', index: 6, component: ReusableCellExample2},
+            {title: 'Large ListView Example', index: 7, component: ListViewExample},
+            {title: 'Reusable Large TableView Example', index: 8, component: LargeTableExample},
+            {title: 'Custom Editing Example', index: 9, component: CustomEditableExample},
         ];
+
         return (
             <Navigator
-              initialRoute={routes[0]}
-              initialRouteStack={routes}
-              renderScene={(route, navigator) => {
-                let Component = route.component;
-                return <Component navigator={navigator} routes={routes}></Component>
-              }}
-              navigationBar={
-                 <Navigator.NavigationBar
-                   routeMapper={{
-                     LeftButton: (route, navigator, index, navState) =>
-                      { return (<Text onPress={ () => {navigator.pop()}}>Back</Text>); },
-                     RightButton: (route, navigator, index, navState) =>
-                       { return (<Text>Done</Text>); },
-                     Title: (route, navigator, index, navState) =>
-                       { return (<Text>{route.title}</Text>); },
-                   }}
-                   style={{backgroundColor: 'gray'}}
-                 />
-              }/>
+                initialRoute={routes[0]}
+                initialRouteStack={routes}
+                renderScene={(route, navigator) => {
+                    return <route.component navigator={navigator} routes={routes} />
+                }}
+                navigationBar={
+                    <Navigator.NavigationBar
+                        routeMapper={{
+                            LeftButton: (route, navigator, index, navState) => {
+                                return (
+                                    <Text onPress={ () => { navigator.pop() }}>
+                                        Back
+                                    </Text>);
+                            },
+                            RightButton: (route, navigator, index, navState) => {
+                                return (<Text>Done</Text>);
+                            },
+                            Title: (route, navigator, index, navState) => {
+                                return (<Text>{route.title}</Text>);
+                            },
+                        }}
+                    />
+                }/>
         );
     }
 }

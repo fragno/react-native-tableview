@@ -11,8 +11,9 @@ import {
     PointPropType,
     findNodeHandle,
 } from 'react-native';
-var RNTableViewConsts = NativeModules.UIManager.RNTableView.Constants;
-var resolveAssetSource = require('react-native/Libraries/Image/resolveAssetSource');
+
+const RNTableViewConsts = NativeModules.UIManager.RNTableView.Constants;
+const resolveAssetSource = require('react-native/Libraries/Image/resolveAssetSource');
 
 function extend(el, map) {
     for (var i in map)
@@ -20,7 +21,8 @@ function extend(el, map) {
             el[i] = map[i];
     return el;
 }
-var TableView = React.createClass({
+
+const TableView = React.createClass({
     mixins: [NativeMethodsMixin],
 
     propTypes: {

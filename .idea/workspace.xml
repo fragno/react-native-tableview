@@ -2,132 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0f40fc99-b7b9-4263-9d2a-af1892b56dd8" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/RNTableView.xcodeproj/project.xcworkspace/xcuserdata/aksonov.xcuserdatad/UserInterfaceState.xcuserstate" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/RNTableView.xcodeproj/project.xcworkspace/xcuserdata/fragno.xcuserdatad/UserInterfaceState.xcuserstate" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/RNTableView.xcodeproj/project.xcworkspace/xcuserdata/nickwientge.xcuserdatad/UserInterfaceState.xcuserstate" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/RNTableView.xcodeproj/project.xcworkspace/xcuserdata/sjchmiela.xcuserdatad/UserInterfaceState.xcuserstate" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/RNTableView.xcodeproj/project.xcworkspace/xcuserdata/zhangjilong.xcuserdatad/UserInterfaceState.xcuserstate" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/example/ios/Images.xcassets/AppIcon.appiconset/Contents.json" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/JSONDataSource.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/JSONDataSource.m" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/RNAppGlobals.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/RNAppGlobals.m" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/RNCellView.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/RNCellView.m" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/RNCellViewManager.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/RNCellViewManager.m" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/RNReactModuleCell.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/RNReactModuleCell.m" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/RNTableFooterView.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/RNTableFooterView.m" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/RNTableFooterViewManager.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/RNTableFooterViewManager.m" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/RNTableHeaderView.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/RNTableHeaderView.m" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/RNTableHeaderViewManager.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/RNTableHeaderViewManager.m" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/RNTableView.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/RNTableView.m" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/RNTableView.xcodeproj/project.pbxproj" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/RNTableView.xcodeproj/project.xcworkspace/contents.xcworkspacedata" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/RNTableView.xcodeproj/project.xcworkspace/xcshareddata/RCTSvg.xccheckout" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/RNTableView.xcodeproj/project.xcworkspace/xcshareddata/RCTTableView.xccheckout" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/RNTableView.xcodeproj/project.xcworkspace/xcshareddata/RNTableView.xccheckout" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/RNTableView.xcodeproj/project.xcworkspace/xcuserdata/aksonov.xcuserdatad/WorkspaceSettings.xcsettings" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/RNTableView.xcodeproj/xcuserdata/aksonov.xcuserdatad/xcschemes/RCTTableView.xcscheme" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/RNTableView.xcodeproj/xcuserdata/aksonov.xcuserdatad/xcschemes/xcschememanagement.plist" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/RNTableView.xcodeproj/xcuserdata/fragno.xcuserdatad/xcschemes/RNTableView.xcscheme" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/RNTableView.xcodeproj/xcuserdata/fragno.xcuserdatad/xcschemes/xcschememanagement.plist" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/RNTableView.xcodeproj/xcuserdata/nickwientge.xcuserdatad/xcschemes/RNTableView.xcscheme" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/RNTableView.xcodeproj/xcuserdata/nickwientge.xcuserdatad/xcschemes/xcschememanagement.plist" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/RNTableView.xcodeproj/xcuserdata/sjchmiela.xcuserdatad/xcschemes/RNTableView.xcscheme" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/RNTableView.xcodeproj/xcuserdata/sjchmiela.xcuserdatad/xcschemes/xcschememanagement.plist" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/RNTableView.xcodeproj/xcuserdata/zhangjilong.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/RNTableView.xcodeproj/xcuserdata/zhangjilong.xcuserdatad/xcschemes/RNTableView.xcscheme" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/RNTableView.xcodeproj/xcuserdata/zhangjilong.xcuserdatad/xcschemes/xcschememanagement.plist" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/RNTableViewCell.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/RNTableViewCell.m" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/RNTableViewManager.h" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/ios/RNTableViewManager.m" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/.name" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/RNTableView.podspec" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/RNTableView.xcodeproj/project.pbxproj" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/RNTableView.xcodeproj/project.xcworkspace/contents.xcworkspacedata" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/RNTableView.xcodeproj/project.xcworkspace/xcshareddata/RCTSvg.xccheckout" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/RNTableView.xcodeproj/project.xcworkspace/xcshareddata/RCTTableView.xccheckout" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/RNTableView.xcodeproj/project.xcworkspace/xcshareddata/RNTableView.xccheckout" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/RNTableView.xcodeproj/project.xcworkspace/xcuserdata/aksonov.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/RNTableView.xcodeproj/project.xcworkspace/xcuserdata/aksonov.xcuserdatad/WorkspaceSettings.xcsettings" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/RNTableView.xcodeproj/project.xcworkspace/xcuserdata/nickwientge.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/RNTableView.xcodeproj/project.xcworkspace/xcuserdata/sjchmiela.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/RNTableView.xcodeproj/project.xcworkspace/xcuserdata/zhangjilong.xcuserdatad/UserInterfaceState.xcuserstate" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/RNTableView.xcodeproj/xcuserdata/aksonov.xcuserdatad/xcschemes/RCTTableView.xcscheme" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/RNTableView.xcodeproj/xcuserdata/aksonov.xcuserdatad/xcschemes/xcschememanagement.plist" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/RNTableView.xcodeproj/xcuserdata/nickwientge.xcuserdatad/xcschemes/RNTableView.xcscheme" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/RNTableView.xcodeproj/xcuserdata/nickwientge.xcuserdatad/xcschemes/xcschememanagement.plist" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/RNTableView.xcodeproj/xcuserdata/sjchmiela.xcuserdatad/xcschemes/RNTableView.xcscheme" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/RNTableView.xcodeproj/xcuserdata/sjchmiela.xcuserdatad/xcschemes/xcschememanagement.plist" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/RNTableView.xcodeproj/xcuserdata/zhangjilong.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/RNTableView.xcodeproj/xcuserdata/zhangjilong.xcuserdatad/xcschemes/RNTableView.xcscheme" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/RNTableView.xcodeproj/xcuserdata/zhangjilong.xcuserdatad/xcschemes/xcschememanagement.plist" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/RNTableView/JSONDataSource.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/RNTableView/JSONDataSource.m" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/RNTableView/RNAppGlobals.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/RNTableView/RNAppGlobals.m" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/RNTableView/RNCellView.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/RNTableView/RNCellView.m" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/RNTableView/RNCellViewManager.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/RNTableView/RNCellViewManager.m" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/RNTableView/RNReactModuleCell.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/RNTableView/RNReactModuleCell.m" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/RNTableView/RNTableFooterView.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/RNTableView/RNTableFooterView.m" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/RNTableView/RNTableFooterViewManager.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/RNTableView/RNTableFooterViewManager.m" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/RNTableView/RNTableHeaderView.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/RNTableView/RNTableHeaderView.m" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/RNTableView/RNTableHeaderViewManager.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/RNTableView/RNTableHeaderViewManager.m" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/RNTableView/RNTableView.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/RNTableView/RNTableView.m" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/RNTableView/RNTableViewCell.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/RNTableView/RNTableViewCell.m" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/RNTableView/RNTableViewManager.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/RNTableView/RNTableViewManager.m" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/examples/TableViewDemo/.flowconfig" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/examples/TableViewDemo/.gitignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/examples/TableViewDemo/.idea/.name" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/examples/TableViewDemo/.idea/SVGDemo.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/examples/TableViewDemo/.idea/jsLibraryMappings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/examples/TableViewDemo/.idea/libraries/SVGDemo_node_modules.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/examples/TableViewDemo/.idea/misc.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/examples/TableViewDemo/.idea/modules.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/examples/TableViewDemo/.idea/vcs.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/examples/TableViewDemo/.idea/workspace.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/examples/TableViewDemo/.npmignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/examples/TableViewDemo/TableViewDemo.xcodeproj/project.pbxproj" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/examples/TableViewDemo/countries.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/examples/TableViewDemo/iOS/AppDelegate.h" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/examples/TableViewDemo/iOS/AppDelegate.m" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/examples/TableViewDemo/iOS/Base.lproj/LaunchScreen.xib" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/examples/TableViewDemo/iOS/Images.xcassets/AppIcon.appiconset/Contents.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/examples/TableViewDemo/iOS/Info.plist" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/examples/TableViewDemo/iOS/main.jsbundle" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/examples/TableViewDemo/iOS/main.m" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/examples/TableViewDemo/index.ios.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/examples/TableViewDemo/package.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/examples/TableViewDemo/states.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/examples/TableViewDemo/test.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/index.js" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/react-native-tableview.iml" afterPath="$PROJECT_DIR$/.idea/react-native-tableview.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.npmignore" afterPath="$PROJECT_DIR$/.npmignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TableView.js" afterPath="$PROJECT_DIR$/TableView.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example/index.ios.js" afterPath="$PROJECT_DIR$/example/index.ios.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -147,31 +23,48 @@
     <favorites_list name="react-native-tableview" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="index.ios.js" pinned="false" current-in-tab="false">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="index.ios.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/example/index.ios.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-885">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="107">
+              <caret line="490" column="1" lean-forward="true" selection-start-line="490" selection-start-column="1" selection-end-line="490" selection-end-column="1" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
+      <file leaf-file-name="TableView.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/TableView.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="242">
+              <caret line="297" column="38" lean-forward="true" selection-start-line="297" selection-start-column="38" selection-end-line="297" selection-end-column="38" />
+              <folding>
+                <element signature="e#14#55#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>lauc</find>
+      <find>example 1</find>
+      <find>Example1</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/TableView.js" />
+        <option value="$PROJECT_DIR$/example/index.ios.js" />
+      </list>
+    </option>
   </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER">
@@ -182,6 +75,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/example/node_modules" />
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
@@ -204,7 +98,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -234,11 +127,18 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
+    <property name="nodejs_interpreter_path" value="$USER_HOME$/.nvm/versions/node/v6.9.1/bin/node" />
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
+      <method />
+    </configuration>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
@@ -251,46 +151,52 @@
       <option name="presentableId" value="Default" />
       <updated>1480930453424</updated>
       <workItem from="1480930459364" duration="24000" />
+      <workItem from="1480936480592" duration="1395000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24000" />
+    <option name="totallyTimeSpent" value="1419000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="834" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="processedProjectFiles" value="true" />
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/example/index.ios.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-885">
+        <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
@@ -300,6 +206,32 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TableView.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="297" column="38" lean-forward="true" selection-start-line="297" selection-start-column="38" selection-end-line="297" selection-end-column="38" />
+          <folding>
+            <element signature="e#14#55#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example/index.ios.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="107">
+          <caret line="490" column="1" lean-forward="true" selection-start-line="490" selection-start-column="1" selection-end-line="490" selection-end-column="1" />
           <folding />
         </state>
       </provider>
