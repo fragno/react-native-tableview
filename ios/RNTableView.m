@@ -11,7 +11,6 @@
 #import "RCTEventDispatcher.h"
 #import "RCTUtils.h"
 #import "UIView+React.h"
-#import "JSONDataSource.h"
 #import "RNCellView.h"
 #import "RNTableFooterView.h"
 #import "RNTableHeaderView.h"
@@ -37,7 +36,7 @@
     [self.tableView setEditing:editing animated:YES];
 }
 
--(void) setSeparatorColor:(UIColor *)separatorColor
+-(void)setSeparatorColor:(UIColor *)separatorColor
 {
     _separatorColor = separatorColor;
 
@@ -57,19 +56,28 @@
     //   [super insertSubview:subview atIndex:atIndex];
 
     // just add them to registry
-    if ([subview isKindOfClass:[RNCellView class]]){
+    if ([subview isKindOfClass:[RNCellView class]]) {
         RNCellView *cellView = (RNCellView *)subview;
         cellView.tableView = self.tableView;
-        while (cellView.section >= [_cells count]){
+        
+        // cells must be more than sections
+        while (cellView.section >= [_cells count]) {
             [_cells addObject:[NSMutableArray array]];
         }
-        [_cells[cellView.section] addObject:subview];
-        if (cellView.section == [_sections count]-1 && cellView.row == [_sections[cellView.section][@"count"] integerValue]-1){
+        
+        // add cells to section
+        [_cells[cellView.section] addObject:cellView];
+        
+        // all cells are processed
+        if (cellView.section == [_sections count] - 1 &&
+            cellView.row == [_sections[cellView.section][@"count"] integerValue] - 1) {
             [self.tableView reloadData];
         }
+        
     } else if ([subview isKindOfClass:[RNTableFooterView class]]){
         RNTableFooterView *footerView = (RNTableFooterView *)subview;
         footerView.tableView = self.tableView;
+        
     } else if ([subview isKindOfClass:[RNTableHeaderView class]]){
         RNTableHeaderView *headerView = (RNTableHeaderView *)subview;
         headerView.tableView = self.tableView;
@@ -101,9 +109,9 @@
 
 RCT_NOT_IMPLEMENTED(-initWithFrame:(CGRect)frame)
 RCT_NOT_IMPLEMENTED(-initWithCoder:(NSCoder *)aDecoder)
+
 - (void)setTableViewStyle:(UITableViewStyle)tableViewStyle {
     _tableViewStyle = tableViewStyle;
-
     [self createTableView];
 }
 
@@ -137,12 +145,6 @@ RCT_NOT_IMPLEMENTED(-initWithCoder:(NSCoder *)aDecoder)
 - (void)layoutSubviews {
     [self.tableView setFrame:self.frame];
 
-    // if sections are not define, try to load JSON
-    if (![_sections count] && _json){
-        datasource = [[JSONDataSource alloc] initWithFilename:_json filter:_filter args:_filterArgs];
-        self.sections = [NSMutableArray arrayWithArray:[datasource sections]];
-    }
-
     // find first section with selection
     NSInteger selectedSection = -1;
     for (int i=0;i<[_selectedIndexes count];i++){
@@ -152,10 +154,15 @@ RCT_NOT_IMPLEMENTED(-initWithCoder:(NSCoder *)aDecoder)
         }
     }
     // focus of first selected value
-    if (_autoFocus && selectedSection>=0 && [self numberOfSectionsInTableView:self.tableView] && [self tableView:self.tableView numberOfRowsInSection:selectedSection]){
+    if (_autoFocus && selectedSection>=0 &&
+        [self numberOfSectionsInTableView:self.tableView] &&
+        [self tableView:self.tableView numberOfRowsInSection:selectedSection]) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            NSIndexPath *indexPath = [NSIndexPath indexPathForItem:[_selectedIndexes[selectedSection] intValue ]inSection:selectedSection];
-            [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:_autoFocusAnimate];
+            NSIndexPath *indexPath = [NSIndexPath indexPathForItem:[_selectedIndexes[selectedSection] intValue]
+                                                         inSection:selectedSection];
+            [self.tableView scrollToRowAtIndexPath:indexPath
+                                  atScrollPosition:UITableViewScrollPositionMiddle
+                                          animated:_autoFocusAnimate];
         });
     }
 }
@@ -165,6 +172,7 @@ RCT_NOT_IMPLEMENTED(-initWithCoder:(NSCoder *)aDecoder)
 - (void) scrollToOffsetX:(CGFloat)x offsetY:(CGFloat)y animated:(BOOL)animated {
     [_tableView setContentOffset:CGPointMake(x, y) animated:animated];
 }
+
 
 #pragma mark - Private APIs
 
@@ -191,6 +199,7 @@ RCT_NOT_IMPLEMENTED(-initWithCoder:(NSCoder *)aDecoder)
     [_tableView registerClass:[RNReactModuleCell class] forCellReuseIdentifier:_reactModuleCellReuseIndentifier];
     [self addSubview:_tableView];
 }
+
 - (void)tableView:(UITableView *)tableView willDisplayFooterView:(nonnull UIView *)view forSection:(NSInteger)section {
     UITableViewHeaderFooterView *footer = (UITableViewHeaderFooterView *)view;
 
@@ -202,10 +211,10 @@ RCT_NOT_IMPLEMENTED(-initWithCoder:(NSCoder *)aDecoder)
     }
 }
 
-
 -(void)setHeaderHeight:(float)headerHeight {
     _headerHeight = headerHeight;
 }
+
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     if (_sections[section][@"headerHeight"]){
         return [_sections[section][@"headerHeight"] floatValue] ? [_sections[section][@"headerHeight"] floatValue] : 0.000001;
@@ -242,7 +251,7 @@ RCT_NOT_IMPLEMENTED(-initWithCoder:(NSCoder *)aDecoder)
 
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (self.emptyInsets){
+    if (self.emptyInsets) {
         // Remove separator inset
         if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
             [cell setSeparatorInset:UIEdgeInsetsZero];
@@ -258,15 +267,14 @@ RCT_NOT_IMPLEMENTED(-initWithCoder:(NSCoder *)aDecoder)
             [cell setLayoutMargins:UIEdgeInsetsZero];
         }
     }
-    if (self.font){
+    if (self.font) {
         cell.detailTextLabel.font = self.font;
         cell.textLabel.font = self.font;
     }
-    if (self.detailFont)
-    {
+    if (self.detailFont) {
         cell.detailTextLabel.font = self.detailFont;
     }
-    if (self.tintColor){
+    if (self.tintColor) {
         cell.tintColor = self.tintColor;
     }
     NSDictionary *item = [self dataForRow:indexPath.item section:indexPath.section];
@@ -274,18 +282,17 @@ RCT_NOT_IMPLEMENTED(-initWithCoder:(NSCoder *)aDecoder)
         cell.textLabel.textColor = self.selectedTextColor;
         cell.detailTextLabel.textColor = self.selectedTextColor;
     } else {
-        if (self.textColor){
+        if (self.textColor) {
             cell.textLabel.textColor = self.textColor;
             cell.detailTextLabel.textColor = self.textColor;
         }
-        if (self.detailTextColor){
+        if (self.detailTextColor) {
             cell.detailTextLabel.textColor = self.detailTextColor;
         }
 
     }
 
-    if (self.selectedBackgroundColor && [item[@"selected"] intValue])
-    {
+    if (self.selectedBackgroundColor && [item[@"selected"] intValue]) {
         [cell setBackgroundColor:self.selectedBackgroundColor];
     } else {
         if (item[@"transparent"])
@@ -315,13 +322,20 @@ RCT_NOT_IMPLEMENTED(-initWithCoder:(NSCoder *)aDecoder)
             cell.imageView.image = image;
         }
     }
-    [_eventDispatcher sendInputEventWithName:@"onWillDisplayCell" body:@{@"target":self.reactTag, @"row":@(indexPath.row), @"section": @(indexPath.section)}];
+    [_eventDispatcher sendInputEventWithName:@"onWillDisplayCell"
+                                        body:@{
+                                               @"target":self.reactTag,
+                                               @"row":@(indexPath.row),
+                                               @"section": @(indexPath.section)}];
 }
 
 - (void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    [_eventDispatcher sendInputEventWithName:@"onEndDisplayingCell" body:@{@"target":self.reactTag, @"row":@(indexPath.row), @"section": @(indexPath.section)}];
+    [_eventDispatcher sendInputEventWithName:@"onEndDisplayingCell"
+                                        body:@{
+                                               @"target":self.reactTag,
+                                               @"row":@(indexPath.row),
+                                               @"section": @(indexPath.section)}];
 }
-
 
 - (void)setSections:(NSArray *)sections
 {
@@ -343,9 +357,11 @@ RCT_NOT_IMPLEMENTED(-initWithCoder:(NSCoder *)aDecoder)
         NSInteger selectedIndex = -1;
         for (NSDictionary *item in allItems){
             NSMutableDictionary *itemData = [NSMutableDictionary dictionaryWithDictionary:item];
-            if ((itemData[@"selected"] && [itemData[@"selected"] intValue]) || (self.selectedValue && [self.selectedValue isEqual:item[@"value"]])){
-                if(selectedIndex == -1)
+            if ((itemData[@"selected"] && [itemData[@"selected"] intValue]) ||
+                (self.selectedValue && [self.selectedValue isEqual:item[@"value"]])) {
+                if(selectedIndex == -1) {
                     selectedIndex = [items count];
+                }
                 itemData[@"selected"] = @YES;
                 found = YES;
             }
@@ -381,13 +397,19 @@ RCT_NOT_IMPLEMENTED(-initWithCoder:(NSCoder *)aDecoder)
     return count;
 }
 
--(UITableViewCell*)setupReactModuleCell:(UITableView *)tableView data:(NSDictionary*)data indexPath:(NSIndexPath *)indexPath {
-    RCTAssert(_bridge, @"Must set global bridge in AppDelegate, e.g. \n\
-              #import <RNTableView/RNAppGlobals.h>\n\
-              [[RNAppGlobals sharedInstance] setAppBridge:rootView.bridge]");
+-(UITableViewCell*)setupReactModuleCell:(UITableView *)tableView
+                                   data:(NSDictionary*)data
+                              indexPath:(NSIndexPath *)indexPath {
+    RCTAssert(_bridge, @"table view must create by initWithBridge:");
     RNReactModuleCell *cell = [tableView dequeueReusableCellWithIdentifier:_reactModuleCellReuseIndentifier];
     if (cell == nil) {
-        cell = [[RNReactModuleCell alloc] initWithStyle:self.tableViewCellStyle reuseIdentifier:_reactModuleCellReuseIndentifier bridge: _bridge data:data indexPath:indexPath reactModule:_reactModuleForCell tableViewTag:self.reactTag];
+        cell = [[RNReactModuleCell alloc] initWithStyle:self.tableViewCellStyle
+                                        reuseIdentifier:_reactModuleCellReuseIndentifier
+                                                 bridge:_bridge
+                                                   data:data
+                                              indexPath:indexPath
+                                            reactModule:_reactModuleForCell
+                                           tableViewTag:self.reactTag];
     } else {
         [cell setUpAndConfigure:data bridge:_bridge indexPath:indexPath reactModule:_reactModuleForCell tableViewTag:self.reactTag];
     }
@@ -401,8 +423,10 @@ RCT_NOT_IMPLEMENTED(-initWithCoder:(NSCoder *)aDecoder)
     // check if it is standard cell or user-defined UI
     if ([self hasCustomCells:indexPath.section]){
         cell = ((RNCellView *)_cells[indexPath.section][indexPath.row]).tableViewCell;
+        
     } else if (self.reactModuleForCell != nil && ![self.reactModuleForCell isEqualToString:@""]) {
         cell = [self setupReactModuleCell:tableView data:item indexPath:indexPath];
+        
     } else {
         cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
         if (cell == nil) {
@@ -464,7 +488,7 @@ RCT_NOT_IMPLEMENTED(-initWithCoder:(NSCoder *)aDecoder)
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 
     NSInteger selectedIndex = [self.selectedIndexes[indexPath.section] integerValue];
-    NSMutableDictionary *oldValue = selectedIndex>=0 ?[self dataForRow:selectedIndex section:indexPath.section] : [NSMutableDictionary dictionaryWithDictionary:@{}];
+    NSMutableDictionary *oldValue = selectedIndex >= 0 ? [self dataForRow:selectedIndex section:indexPath.section] : [NSMutableDictionary dictionaryWithDictionary:@{}];
 
     NSMutableDictionary *newValue = [self dataForRow:indexPath.item section:indexPath.section];
     newValue[@"target"] = self.reactTag;
@@ -512,7 +536,14 @@ RCT_NOT_IMPLEMENTED(-initWithCoder:(NSCoder *)aDecoder)
 }
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
-    [_eventDispatcher sendInputEventWithName:@"change" body:@{@"target":self.reactTag, @"sourceIndex":@(sourceIndexPath.row), @"sourceSection": @(sourceIndexPath.section), @"destinationIndex":@(destinationIndexPath.row), @"destinationSection":@(destinationIndexPath.section), @"mode": @"move"}];
+    [_eventDispatcher sendInputEventWithName:@"change"
+                                        body:@{
+                                               @"target":self.reactTag,
+                                               @"sourceIndex":@(sourceIndexPath.row),
+                                               @"sourceSection": @(sourceIndexPath.section),
+                                               @"destinationIndex":@(destinationIndexPath.row),
+                                               @"destinationSection":@(destinationIndexPath.section),
+                                               @"mode": @"move"}];
 }
 
 - (NSIndexPath *)tableView:(UITableView *)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath {
@@ -539,11 +570,11 @@ RCT_NOT_IMPLEMENTED(-initWithCoder:(NSCoder *)aDecoder)
 }
 
 -(UITableViewCellEditingStyle)tableView:(UITableView *)tableView
-          editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath{
+          editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
     return self.tableViewCellEditingStyle;
 }
 
--(BOOL)tableView:(UITableView *)tableView shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)indexPath{
+-(BOOL)tableView:(UITableView *)tableView shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)indexPath {
     if (self.tableViewCellEditingStyle == UITableViewCellEditingStyleNone) {
         return NO;
     }

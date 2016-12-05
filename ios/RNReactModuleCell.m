@@ -5,7 +5,13 @@
 //  Created by Anna Berman on 2/6/16.
 //  Copyright © 2016 Pavlo Aksonov. All rights reserved.
 //
-
+//
+//  RNReactModuleCell.m
+//  RCTTableView
+//
+//  Created by Pavlo Aksonov on 24.08.15.
+//  Copyright (c) 2015 Pavlo Aksonov. All rights reserved.
+//
 #import <RCTRootView.h>
 #import "RNReactModuleCell.h"
 #import "RNTableView.h"
@@ -14,7 +20,13 @@
     RCTRootView *_rootView;
 }
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier bridge:(RCTBridge*) bridge data:(NSDictionary*)data indexPath:(NSIndexPath*)indexPath reactModule:(NSString*)reactModule tableViewTag:(NSNumber*)reactTag
+- (id)initWithStyle:(UITableViewCellStyle)style
+    reuseIdentifier:(NSString *)reuseIdentifier
+             bridge:(RCTBridge*)bridge
+               data:(NSDictionary*)data
+          indexPath:(NSIndexPath*)indexPath
+        reactModule:(NSString*)reactModule
+       tableViewTag:(NSNumber*)reactTag
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
@@ -23,15 +35,30 @@
     return self;
 }
 
--(NSDictionary*) toProps:(NSDictionary *)data indexPath:(NSIndexPath*)indexPath reactTag:(NSNumber*)reactTag {
-    return @{@"data":data, @"section":[[NSNumber alloc] initWithLong:indexPath.section], @"row":[[NSNumber alloc] initWithLong:indexPath.row], @"tableViewReactTag":reactTag};
+-(NSDictionary*)toProps:(NSDictionary *)data
+              indexPath:(NSIndexPath*)indexPath
+               reactTag:(NSNumber*)reactTag
+{
+    return @{
+             @"data":data,
+             @"section":[[NSNumber alloc] initWithLong:indexPath.section],
+             @"row":[[NSNumber alloc] initWithLong:indexPath.row],
+             @"tableViewReactTag":reactTag
+             };
 }
 
--(void)setUpAndConfigure:(NSDictionary*)data bridge:(RCTBridge*)bridge indexPath:(NSIndexPath*)indexPath reactModule:(NSString*)reactModule tableViewTag:(NSNumber*)reactTag {
+-(void)setUpAndConfigure:(NSDictionary*)data
+                  bridge:(RCTBridge*)bridge
+               indexPath:(NSIndexPath*)indexPath
+             reactModule:(NSString*)reactModule
+            tableViewTag:(NSNumber*)reactTag
+{
     NSDictionary *props = [self toProps:data indexPath:indexPath reactTag:reactTag];
     if (_rootView == nil) {
         //Create the mini react app that will populate our cell. This will be called from cellForRowAtIndexPath
-        _rootView = [[RCTRootView alloc] initWithBridge:bridge moduleName:reactModule initialProperties:props];
+        _rootView = [[RCTRootView alloc] initWithBridge:bridge
+                                             moduleName:reactModule
+                                      initialProperties:props];
         [self.contentView addSubview:_rootView];
         _rootView.frame = self.contentView.frame;
         _rootView.autoresizingMask = UIViewAutoresizingFlexibleWidth |UIViewAutoresizingFlexibleHeight;

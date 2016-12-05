@@ -32,7 +32,6 @@ RCT_EXPORT_MODULE()
 }
 
 RCT_EXPORT_VIEW_PROPERTY(sections, NSArray)
-RCT_EXPORT_VIEW_PROPERTY(json, NSString)
 RCT_EXPORT_VIEW_PROPERTY(editing, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(autoFocus, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(autoFocusAnimate, BOOL)
@@ -231,15 +230,5 @@ RCT_EXPORT_METHOD(scrollTo:(nonnull NSNumber *)reactTag
          [view scrollToOffsetX:x offsetY:y animated:true];
      }];
 }
-
-//
-//- (NSDictionary *)constantsToExport
-//{
-//    UIPickerView *view = [[UIPickerView alloc] init];
-//    return @{
-//             @"ComponentHeight": @(view.intrinsicContentSize.height),
-//             @"ComponentWidth": @(view.intrinsicContentSize.width)
-//             };
-//}
 
 @end

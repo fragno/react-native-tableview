@@ -18,8 +18,10 @@ const TableView = require('react-native-tableview');
 const Section = TableView.Section;
 const Item = TableView.Item;
 const Cell = TableView.Cell;
+const Header = TableView.Header;
+const Footer = TableView.Footer;
 
-class Example1 extends React.Component {
+class ExampleCustomCell extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -51,7 +53,7 @@ class Example1 extends React.Component {
         return (
             <TableView style={{flex:1, marginTop: 20}} onPress={(event) => alert(JSON.stringify(event))}>
                 <Section label={this.state.sectionLabel}>
-                    <Cell style={{backgroundColor:'gray'}} value="" key="1">
+                    <Cell style={{backgroundColor:'gray'}} value='ds' key="1">
                         <Text style={{color:'white', textAlign:'right'}}>Cell 1</Text>
                         <Text style={{color:'white', textAlign:'left'}}>Cell 1</Text>
                     </Cell>
@@ -61,7 +63,7 @@ class Example1 extends React.Component {
                     <Cell style={{height:100}} key="4">
                         <Text>Cell 4</Text>
                     </Cell>
-                    <Cell key="5">
+                    <Cell key="5"  image={require('./logo.png')}>
                         <Text>Cell 5</Text>
                     </Cell>
                 </Section>
@@ -91,24 +93,7 @@ class Example1 extends React.Component {
     }
 }
 
-class Example2 extends React.Component {
-    // list spanish provinces and add 'All states' item at the beginning
-    render() {
-        const country = "ES";
-        return (
-            <TableView selectedValue=""
-                       style={{flex:1, marginTop: 20}}
-                       json="states"
-                       filter={`country=='${country}'`}
-                       tableViewCellStyle={TableView.Consts.CellStyle.Subtitle}
-                       onPress={(event) => alert(JSON.stringify(event))}>
-                <Item value="">All states</Item>
-            </TableView>
-        );
-    }
-}
-
-class Example3 extends React.Component {
+class ExampleMultiSections extends React.Component {
     render(){
         return (
             <TableView style={{flex:1, marginTop: 20}}
@@ -150,22 +135,8 @@ class Example3 extends React.Component {
     }
 }
 
-//Similar to example 2 but use "TableViewExampleCell" reusable cells
-class ReusableCellExample1 extends React.Component {
-    // list spanish provinces and add 'All states' item at the beginning
-    render() {
-        const country = "ES";
-        return (
-            <TableView selectedValue="" reactModuleForCell="TableViewExampleCell" style={{flex:1, marginTop: 20}} json="states" filter={`country=='${country}'`}
-                       tableViewCellStyle={TableView.Consts.CellStyle.Subtitle}
-                       onPress={(event) => alert(JSON.stringify(event))}>
-                <Item value="">All states</Item>
-            </TableView>
-        );
-    }
-}
-
-class ReusableCellExample2 extends React.Component {
+//Similar to ExampleMultiSections but use "TableViewExampleCell" reusable cells
+class ReusableExampleMultiSections extends React.Component {
     render(){
         const numAdditionaItems = 1000;
         let moreItems = [];
@@ -173,7 +144,8 @@ class ReusableCellExample2 extends React.Component {
             moreItems.push(i);
         }
         return (
-            <TableView reactModuleForCell="TableViewExampleCell" style={{flex:1, marginTop: 20}}
+            <TableView reactModuleForCell="TableViewExampleCell"
+                       style={{flex:1, marginTop: 20}}
                        allowsToggle={true}
                        allowsMultipleSelection={true}
                        tableViewStyle={TableView.Consts.Style.Grouped}
@@ -214,6 +186,51 @@ class ReusableCellExample2 extends React.Component {
     }
 }
 
+class ListViewExample extends React.Component {
+    constructor(props){
+        super(props);
+        this.numAdditionaItems = 1000;
+        this.data = {};
+        for(let i = 0; i < this.numAdditionaItems; ++i) {
+            this.data[i] = i;
+        }
+        this.state = {dataSource: new ListView.DataSource({
+            rowHasChanged: (r1, r2) => r1 !== r2
+        })};
+    }
+    render() {
+        let data = this.data;
+        return (
+            <ListView style={{marginTop: 64}}
+                dataSource={this.state.dataSource.cloneWithRows(Object.keys(data))}
+                renderRow={(k) => <Text onPress={(e)=>alert("item:"+k+", "+data[k])}> data: {data[k]}</Text>}
+                />
+        );
+    }
+}
+
+class LargeTableExample extends React.Component {
+    render() {
+        const numAdditionaItems = 1000;
+        const items = [];
+        for (let i = 0; i < numAdditionaItems; ++i) {
+            items.push(i);
+        }
+        return (
+            <TableView reactModuleForCell="TableViewExampleCell"
+                       style={{flex: 1, marginTop: 20}}
+                       allowsToggle={true}
+                       allowsMultipleSelection={true}
+                       tableViewStyle={TableView.Consts.Style.Grouped}
+                       onPress={(event) => alert(JSON.stringify(event))}>
+                <Section label={"large section - " + numAdditionaItems + " items"} arrow={true}>
+                    {items.map((i) => <Item key={i + 1}>{i + 1}</Item>)}
+                </Section>
+            </TableView>
+        );
+    }
+}
+
 class CustomEditableExample extends React.Component {
     constructor(props) {
         super(props);
@@ -231,7 +248,7 @@ class CustomEditableExample extends React.Component {
     editOrSave() {
         if (this.state.editing) {
             //Save edited data
-            
+
             const self = this;
             let newData = (this.dataItemKeysBeingEdited || []).map(itemKey=>self.preEditData[itemKey]);
             this.dataItemKeysBeingEdited = null;
@@ -337,7 +354,7 @@ class CustomEditableExample extends React.Component {
                            style={{flex:1, height: 40, borderColor: 'gray', borderWidth: 1, marginTop: 20}}
                            onChangeText={(text) => this.setState({text:text})}
                            value={this.state.text}
-                    />
+                />
 
                 <TouchableHighlight onPress={(event)=>{this.addItem()}}
                                     style={{borderRadius:5, width:100,backgroundColor:"red",alignItems:"center",justifyContent:"center"}}>
@@ -360,11 +377,13 @@ class CustomEditableExample extends React.Component {
 
                 {!editing && this.getAddItemRow()}
 
-                <TableView editing={editing} style={{flex:1, marginTop: 20}} reactModuleForCell={this.reactCellModule}
+                <TableView editing={editing}
+                           style={{flex:1, marginTop: 20}}
+                           reactModuleForCell={this.reactCellModule}
                            tableViewCellStyle={TableView.Consts.CellStyle.Default}
                            onChange={this.onChange.bind(this)}
-                    >
-                    <Section canMove={editing} canEdit={editing} arrow={!editing}>
+                >
+                    <Section label="editable" canMove={editing} canEdit={editing} arrow={!editing}>
                         {items}
                     </Section>
                 </TableView>
@@ -373,7 +392,7 @@ class CustomEditableExample extends React.Component {
     }
 }
 
-class Edit extends React.Component {
+class ExampleCustomEditable extends React.Component {
     constructor(props){
         super(props);
         this.state = {editing: false};
@@ -382,9 +401,11 @@ class Edit extends React.Component {
         const self = this;
         return (
             <View style={{flex:1}}>
-                <TableView style={{flex:1, marginTop: 20}} editing={this.state.editing}
-                           onPress={(event) => alert(JSON.stringify(event))} onChange={(event) => alert("CHANGED:"+JSON.stringify(event))}>
-                    <Section canMove={true} canEdit={true}>
+                <TableView style={{flex:1, marginTop: 20}}
+                           editing={this.state.editing}
+                           onPress={(event) => alert(JSON.stringify(event))}
+                           onChange={(event) => alert("CHANGED:"+JSON.stringify(event))}>
+                    <Section label="editable" canMove={true} canEdit={true}>
                         <Item canEdit={false}>Item 1</Item>
                         <Item>Item 2</Item>
                         <Item>Item 3</Item>
@@ -399,50 +420,6 @@ class Edit extends React.Component {
         );
     }
 }
-class ListViewExample extends React.Component {
-    constructor(props){
-        super(props);
-        this.numAdditionaItems = 1000;
-        this.data = {};
-        for(let i = 0; i < this.numAdditionaItems; ++i) {
-            this.data[i] = i;
-        }
-        this.state = {dataSource: new ListView.DataSource({
-            rowHasChanged: (r1, r2) => r1 !== r2
-        })};
-    }
-    render() {
-        let data = this.data;
-        return (
-            <ListView
-                dataSource={this.state.dataSource.cloneWithRows(Object.keys(data))}
-                renderRow={(k) => <Text onPress={(e)=>alert("item:"+k+", "+data[k])}> data: {data[k]}</Text>}
-                />
-        );
-    }
-}
-
-class LargeTableExample extends React.Component {
-    render() {
-        const numAdditionaItems = 1000;
-        const items = [];
-        for(let i = 0; i < numAdditionaItems; ++i) {
-            items.push(i);
-        }
-        return (
-            <TableView reactModuleForCell="TableViewExampleCell" style={{flex:1, marginTop: 20}}
-                           allowsToggle={true}
-                           allowsMultipleSelection={true}
-                           tableViewStyle={TableView.Consts.Style.Grouped}
-                           onPress={(event) => alert(JSON.stringify(event))}>
-                <Section label={"large section - "+numAdditionaItems+" items"} arrow={true}>
-                    {items.map((i)=><Item key={i+1}>{i+1}</Item>)}
-                </Section>
-            </TableView>
-        );
-    }
-}
-
 
 class Launch extends React.Component {
     constructor(props) {
@@ -457,31 +434,26 @@ class Launch extends React.Component {
     render(){
         return (
             <TableView style={{flex:1, marginTop: 20}}>
-                <Section label={this.state.sectionLabel}  arrow={true}>
+                <Section label={this.state.sectionLabel}  footerLabel="footerLabel" arrow={true}>
                     <Item onPress={() => this.props.navigator.push(this.props.routes[1])}>
                         Example with custom cells
                     </Item>
                     <Item onPress={() => this.props.navigator.push(this.props.routes[2])}>
-                        Example with app bundle JSON data
+                        Example with multiple sections
                     </Item>
                     <Item onPress={() => this.props.navigator.push(this.props.routes[3])}>
-                        Example with multiple sections</Item>
+                        Example with multiple sections (Use Reuse Cells)
+                    </Item>
                     <Item onPress={() => this.props.navigator.push(this.props.routes[4])}>
-                        Example with editing mode
-                    </Item>
-                    <Item onPress={() => this.props.navigator.push(this.props.routes[5])}>
-                        Reusable Cell Example 1
-                    </Item>
-                    <Item onPress={() => this.props.navigator.push(this.props.routes[6])}>
-                        Reusable Custom Cells
-                    </Item>
-                    <Item onPress={() => this.props.navigator.push(this.props.routes[7])}>
                         Large ListView (scroll memory growth)
                     </Item>
-                    <Item onPress={() => this.props.navigator.push(this.props.routes[8])}>
+                    <Item onPress={() => this.props.navigator.push(this.props.routes[5])}>
                         Reusable Large TableView Example
                     </Item>
-                    <Item onPress={() => this.props.navigator.push(this.props.routes[9])}>
+                    <Item onPress={() => this.props.navigator.push(this.props.routes[6])}>
+                        Example with editing mode
+                    </Item>
+                    <Item onPress={() => this.props.navigator.push(this.props.routes[7])}>
                         Custom Editing Example
                     </Item>
                 </Section>
@@ -494,15 +466,13 @@ class TableViewExample extends React.Component {
     render() {
         const routes = [
             {title: 'TableView Demo', index: 0, component: Launch},
-            {title: 'Example 1', index: 1, component: Example1},
-            {title: 'Example 2', index: 2, component: Example2},
-            {title: 'Example3', index: 3, component: Example3},
-            {title: 'edit', index: 4, component: Edit},
-            {title: 'Reusable Cell Example 1', index: 5, component: ReusableCellExample1},
-            {title: 'Reusable Custom Cells', index: 6, component: ReusableCellExample2},
-            {title: 'Large ListView Example', index: 7, component: ListViewExample},
-            {title: 'Reusable Large TableView Example', index: 8, component: LargeTableExample},
-            {title: 'Custom Editing Example', index: 9, component: CustomEditableExample},
+            {title: 'ExampleCustomCell', index: 1, component: ExampleCustomCell},
+            {title: 'ExampleMultiSections', index: 2, component: ExampleMultiSections},
+            {title: 'ReusableExampleMultiSections', index: 3, component: ReusableExampleMultiSections},
+            {title: 'Large ListView Example', index: 4, component: ListViewExample},
+            {title: 'Reusable Large TableView Example', index: 5, component: LargeTableExample},
+            {title: 'ExampleCustomEditable', index: 6, component: ExampleCustomEditable},
+            {title: 'Custom Editing Example', index: 7, component: CustomEditableExample},
         ];
 
         return (
@@ -542,7 +512,10 @@ class TableViewExampleCell extends React.Component {
         if (this.props.data.backgroundColor !== undefined) {
             style.backgroundColor = this.props.data.backgroundColor;
         }
-        return (<View style={style}><Text>section:{this.props.section},row:{this.props.row},label:{this.props.data.label}</Text></View>);
+        return (
+            <View style={style}>
+                <Text>section:{this.props.section},row:{this.props.row},label:{this.props.data.label}</Text>
+            </View>);
     }
 }
 
@@ -554,69 +527,13 @@ class TableViewExampleCell2 extends React.Component {
         if (this.props.data.backgroundColor !== undefined) {
             style.backgroundColor = this.props.data.backgroundColor;
         }
-        return (<View style={style}><Text>{this.props.data.label}</Text></View>);
-    }
-}
-
-
-//Should be pure... setState on top-level component doesn't seem to work. So we wrap our stateful DinosaurCellExample1 here.
-//Otherwise this.state is null inside render.
-class DinosaurCellExample extends React.Component {
-    render() {
-        return <DinosaurCellExample1 {...this.props} />
-    }
-}
-class DinosaurCellExample1 extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {isLoadingImage: true}
-    }
-
-    imageLoadStarted() {
-        this.setState({isLoadingImage: true});
-    }
-
-    imageLoadEnded() {
-        this.setState({isLoadingImage: false});
-    }
-
-    yearsAgoInMil(num) {
-        return ((-1 * num) / 1000000) + " million years ago";
-    }
-
-    render() {
-        const style = {flex:1, marginTop: 20};
-        if (this.props.data.backgroundColor !== undefined) {
-            style.backgroundColor = this.props.data.backgroundColor;
-        }
-        style.borderColor = "grey";
-        style.borderRadius = 0.02;
-        const styles = {thumb: {width: 100, height: 100}};
-        const appeared = this.yearsAgoInMil(this.props.data.dinosaurappeared);
-        const vanished = this.yearsAgoInMil(this.props.data.dinosaurvanished);
         return (
             <View style={style}>
-                <View style={{flexDirection:"row"}}>
-                    <Image style={styles.thumb}
-                           source={{uri:this.props.data.dinosaururl}}
-                           onLoadStart={()=>this.imageLoadStarted()}
-                           onLoadEnd={()=>this.imageLoadEnded()}/>
-                    <Text style={{flex:1,textAlign:'center',backgroundColor:"transparent"}}>Name: {this.props.data.dinosaurkey}</Text>
-                </View>
-                {this.state.isLoadingImage && <Text>Loading Image...</Text>}
-                <Text>Order:{this.props.data.dinosaurorder}</Text>
-                <Text>Appeared: {appeared}</Text>
-                <Text>Vanished: {vanished}</Text>
-                <Text>Height: {this.props.data.dinosaurheight}</Text>
-                <Text>Length: {this.props.data.dinosaurlength}</Text>
-                <Text>Weight: {this.props.data.dinosaurweight}</Text>
-            </View>
-        );
+                <Text>{this.props.data.label}</Text>
+            </View>);
     }
 }
-
 
 AppRegistry.registerComponent('TableViewExample', () => TableViewExample);
 AppRegistry.registerComponent('TableViewExampleCell', () => TableViewExampleCell);
 AppRegistry.registerComponent('TableViewExampleCell2', () => TableViewExampleCell2);
-AppRegistry.registerComponent('DinosaurCellExample', () => DinosaurCellExample);

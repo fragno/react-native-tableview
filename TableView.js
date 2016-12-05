@@ -15,11 +15,11 @@ import {
 const RNTableViewConsts = NativeModules.UIManager.RNTableView.Constants;
 const resolveAssetSource = require('react-native/Libraries/Image/resolveAssetSource');
 
-function extend(el, map) {
-    for (var i in map)
-        if (typeof(map[i])!='object')
-            el[i] = map[i];
-    return el;
+function extend(item, map) {
+    for (let i in map)
+        if (typeof(map[i]) != 'object')
+            item[i] = map[i];
+    return item;
 }
 
 const TableView = React.createClass({
@@ -35,7 +35,6 @@ const TableView = React.createClass({
         autoFocusAnimate: React.PropTypes.bool,
         alwaysBounceVertical: React.PropTypes.bool,
         moveWithinSectionOnly: React.PropTypes.bool,
-        json: React.PropTypes.string,
         textColor: React.PropTypes.string,
         detailTextColor: React.PropTypes.string,
         tintColor: React.PropTypes.string,
@@ -93,44 +92,52 @@ const TableView = React.createClass({
         this.setState(state);
     },
 
-    // Translate TableView prop and children into stuff that RNTableView understands.
+    /**
+     * Translate TableView prop and children into stuff that RNTableView understands
+     * this make it possible to avoid create too much unnessary cells
+     * @param props
+     * @returns {{sections: Array, additionalItems: Array, children: Array}}
+     * @private
+     */
     _stateFromProps: function(props) {
-        var sections = [];
-        var additionalItems = [];
-        var children = [];
-        var json = props.json;
+        let sections = [];
+        let additionalItems = [];
+        let children = [];
 
         // iterate over sections
         React.Children.forEach(props.children, function (section, index) {
-            var items=[];
-            var count = 0;
-            if (section && section.type==TableView.Section) {
-                let customCells = false;
+            let items=[];
+            let count = 0;
+            if (section && section.type === TableView.Section) {
+                let hasCustomCell = false;
+
+                // iterate over rows
                 React.Children.forEach(section.props.children, function (child, itemIndex) {
-                    var el = {};
-                    extend(el, section.props);
-                    extend(el, child.props);
-                    if (el.children) {
-                        el.label = el.children;
+                    let item = {};
+                    extend(item, section.props);
+                    extend(item, child.props);
+                    if (item.children) {
+                        item.label = item.children;
                     }
 
-                    if (el.image && typeof el.image === 'number') {
-                        el.image = resolveAssetSource(el.image);
+                    if (item.image && typeof item.image === 'number') {
+                        item.image = resolveAssetSource(item.image);
                     }
 
                     count++;
-                    items.push(el);
+                    items.push(item);
 
-                    if (child.type==TableView.Cell){
-                        customCells = true;
+                    if (child.type === TableView.Cell) {
+                        hasCustomCell = true;
                         count++;
                         var element = React.cloneElement(child, {key: index+" "+itemIndex, section: index, row: itemIndex});
                         children.push(element);
                     }
 
                 });
+
                 sections.push({
-                    customCells,
+                    hasCustomCell,
                     label: section.props.label,
                     footerLabel: section.props.footerLabel,
                     footerHeight: section.props.footerHeight,
@@ -138,18 +145,20 @@ const TableView = React.createClass({
                     items: items,
                     count: count
                 });
-            } else if (section && section.type==TableView.Item){
-                var el = extend({},section.props);
-                if (!el.label){
-                    el.label = el.children;
+
+            } else if (section && section.type === TableView.Item) {
+                let item = extend({}, section.props);
+                if (!item.label){
+                    item.label = item.children;
                 }
-                additionalItems.push(el);
-            } else if (section){
+                additionalItems.push(item);
+
+            } else if (section) {
                 children.push(section);
             }
         });
         this.sections = sections;
-        return {sections, additionalItems, children, json};
+        return {sections, additionalItems, children};
     },
 
     scrollTo: function(x, y, animated) {
@@ -163,7 +172,7 @@ const TableView = React.createClass({
 
     render: function() {
         return (
-            <View style={[{flex:1},this.props.style]}>
+            <View style={[{flex:1}, this.props.style]}>
                 <RNTableView
                     ref={(ref) => { this.tableView = ref; }}
                     style={this.props.style}
@@ -176,14 +185,12 @@ const TableView = React.createClass({
                     scrollIndicatorInsets={this.props.contentInset}
                     alwaysBounceVertical={this.props.alwaysBounceVertical}
                     {...this.props}
-                    json={this.state.json}
                     onScroll={this._onScroll}
                     onPress={this._onPress}
                     onAccessoryPress={this._onAccessoryPress}
                     onChange={this._onChange}
                     onWillDisplayCell={this._onWillDisplayCell}
                     onEndDisplayingCell={this._onEndDisplayingCell}>
-
                     {this.state.children}
                 </RNTableView>
             </View>
@@ -231,7 +238,9 @@ const TableView = React.createClass({
     },
     _onWillDisplayCell: function(event) {
         var data = event.nativeEvent;
-        if (this.sections[data.section] && this.sections[data.section].items[data.row] && this.sections[data.section].items[data.row].onWillDisplayCell) {
+        if (this.sections[data.section] &&
+            this.sections[data.section].items[data.row] &&
+            this.sections[data.section].items[data.row].onWillDisplayCell) {
             this.sections[data.section].items[data.row].onWillDisplayCell(data);
         }
         if (this.props.onWillDisplayCell) {
@@ -241,7 +250,9 @@ const TableView = React.createClass({
     },
     _onEndDisplayingCell: function(event) {
         var data = event.nativeEvent;
-        if (this.sections[data.section] && this.sections[data.section].items[data.row] && this.sections[data.section].items[data.row].onEndDisplayingCell) {
+        if (this.sections[data.section] &&
+            this.sections[data.section].items[data.row] &&
+            this.sections[data.section].items[data.row].onEndDisplayingCell) {
             this.sections[data.section].items[data.row].onEndDisplayingCell(data);
         }
         if (this.props.onEndDisplayingCell) {
@@ -268,7 +279,10 @@ TableView.Footer = React.createClass({
         return {width:0, height:0}
     },
     render: function() {
-        return <RNFooterView onLayout={(event)=>{this.setState(event.nativeEvent.layout)}} {...this.props} componentWidth={this.state.width} componentHeight={this.state.height}/>
+        return <RNFooterView onLayout={(event)=>{this.setState(event.nativeEvent.layout)}}
+                             {...this.props}
+                             componentWidth={this.state.width}
+                             componentHeight={this.state.height}/>
     },
 });
 var RNFooterView = requireNativeComponent('RNTableFooterView', null);
@@ -278,7 +292,10 @@ TableView.Header = React.createClass({
         return {width:0, height:0}
     },
     render: function() {
-        return <RNHeaderView onLayout={(event)=>{this.setState(event.nativeEvent.layout)}} {...this.props} componentWidth={this.state.width} componentHeight={this.state.height}/>
+        return <RNHeaderView onLayout={(event)=>{this.setState(event.nativeEvent.layout)}}
+                             {...this.props}
+                             componentWidth={this.state.width}
+                             componentHeight={this.state.height}/>
     },
 });
 var RNHeaderView = requireNativeComponent('RNTableHeaderView', null);
@@ -288,7 +305,10 @@ TableView.Cell = React.createClass({
         return {width:0, height:0}
     },
     render: function() {
-        return <RNCellView onLayout={(event)=>{this.setState(event.nativeEvent.layout)}} {...this.props} componentWidth={this.state.width} componentHeight={this.state.height}/>
+        return <RNCellView onLayout={(event)=>{this.setState(event.nativeEvent.layout)}}
+                           {...this.props}
+                           componentWidth={this.state.width}
+                           componentHeight={this.state.height}/>
     },
 });
 var RNCellView = requireNativeComponent('RNCellView', null);
