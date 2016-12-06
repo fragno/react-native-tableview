@@ -109,7 +109,7 @@ const TableView = React.createClass({
             let items=[];
             let count = 0;
             if (section && section.type === TableView.Section) {
-                let hasCustomCell = false;
+                let hasCustomCells = false;
 
                 // iterate over rows
                 React.Children.forEach(section.props.children, function (child, itemIndex) {
@@ -128,7 +128,7 @@ const TableView = React.createClass({
                     items.push(item);
 
                     if (child.type === TableView.Cell) {
-                        hasCustomCell = true;
+                        hasCustomCells = true;
                         count++;
                         var element = React.cloneElement(child, {key: index+" "+itemIndex, section: index, row: itemIndex});
                         children.push(element);
@@ -137,7 +137,7 @@ const TableView = React.createClass({
                 });
 
                 sections.push({
-                    hasCustomCell,
+                    hasCustomCells,
                     label: section.props.label,
                     footerLabel: section.props.footerLabel,
                     footerHeight: section.props.footerHeight,

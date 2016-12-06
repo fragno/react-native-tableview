@@ -582,7 +582,7 @@ RCT_NOT_IMPLEMENTED(-initWithCoder:(NSCoder *)aDecoder)
 }
 
 -(BOOL)hasCustomCells:(NSInteger)section {
-    return [[_sections[section] valueForKey:@"customCells"] boolValue];
+    return [[_sections[section] valueForKey:@"hasCustomCells"] boolValue];
 }
 
 #pragma mark - Scrolling
